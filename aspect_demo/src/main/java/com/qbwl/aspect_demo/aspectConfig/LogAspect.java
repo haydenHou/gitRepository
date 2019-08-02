@@ -74,7 +74,9 @@ public class LogAspect {
     public void pointUpdate(){
     }
 
-
+    /**
+     * 添加对删除操作的切点
+     */
     @Pointcut(POINT_DEL)
     public void pointDel(){
     }
