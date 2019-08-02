@@ -1,0 +1,16 @@
+username: localftp
+password: www.ftp
+basePath: /jxy_data/image
+port: 21
+
+address: 111.21.51.70
+#address: 172.16.1.228
+
+#日志本地缓存路径
+logPath: /appData/soft/aspect/logs/
+
+#图片本地缓存路径
+nativePath: /appData/soft/aspect/image/
+
+sqlPath: /appData/soft/aspect/sql/
+
