@@ -3,3 +3,6 @@ Git is free software.
 你好
 
 安分守己
+
+
+Creating a new branch is quick.
