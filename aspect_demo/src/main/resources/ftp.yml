@@ -8,9 +8,8 @@ address: 111.21.51.70
 
 #日志本地缓存路径
 logPath: /appData/soft/aspect/logs/
-
 #图片本地缓存路径
 nativePath: /appData/soft/aspect/image/
-
+#sql备注缓存地址
 sqlPath: /appData/soft/aspect/sql/
 

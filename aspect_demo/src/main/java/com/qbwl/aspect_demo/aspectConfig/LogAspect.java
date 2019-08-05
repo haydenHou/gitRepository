@@ -37,6 +37,10 @@ import java.util.Arrays;
 public class LogAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
+
+    /**
+     * 类型转换
+     */
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private DataStageEntity<Object> dataStageEntity;

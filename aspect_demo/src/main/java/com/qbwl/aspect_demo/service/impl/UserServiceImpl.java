@@ -1,8 +1,6 @@
 package com.qbwl.aspect_demo.service.impl;
 
 import com.qbwl.aspect_demo.entity.User;
-import com.qbwl.aspect_demo.exception.UsernameConflictException;
-import com.qbwl.aspect_demo.exception.exception;
 import com.qbwl.aspect_demo.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +23,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(User user) {
-        if("1".equals(user.getName())){
             System.out.println(user+"删除成功");
-        }else {
-            throw new UsernameConflictException("用户不存在");
-        }
-
     }
 }
