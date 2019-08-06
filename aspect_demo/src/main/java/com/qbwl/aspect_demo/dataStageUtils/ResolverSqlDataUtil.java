@@ -28,7 +28,9 @@ public class ResolverSqlDataUtil {
         OutputStream ops;
         StringBuilder stringBuilder = new StringBuilder();
         Queue<DataStageEntity<Object>> queue = SqlToJsonUtil.queue;
+
         if(queue != null){
+            System.out.println(getClass().getName()+":\t"+queue.size());
             if(queue.size()>0){
                 poll = queue.poll();
                 E_OperationType daoType = ((DataStageEntity) poll).getDaoType();

@@ -272,6 +272,9 @@ public class LogAspect {
      * @return
      */
     private Object getObject(Object[] args, ProceedingJoinPoint joinPoint,E_OperationType operationType) {
+        Signature signature = joinPoint.getSignature();
+        String methodName = signature.getName();
+
         Object obj = null;
         try {
             obj = joinPoint.proceed(); //可以加参数
@@ -284,7 +287,7 @@ public class LogAspect {
         Arrays.stream(args).forEach(arg -> {
 //            try {
 //                将操作记录保存至队列
-                SqlToJsonUtil.addOperation(new DataStageEntity<>(operationType,getEntityByArg(arg),arg));
+                SqlToJsonUtil.addOperation(new DataStageEntity<>(operationType,methodName,getEntityByArg(arg),arg));
 //                logger.info("@Around环绕通知：该方法参数为[{}]",OBJECT_MAPPER.writeValueAsString(arg));
 //            } catch (JsonProcessingException e) {
 //                e.printStackTrace();
@@ -299,8 +302,7 @@ public class LogAspect {
      * @return 实体类名称
      */
     private String getEntityByArg(Object arg) {
-        String name = arg.getClass().getName();
-        return name.substring(name.lastIndexOf(".")+1);
+        return arg.getClass().getName();
     }
 }
 /*

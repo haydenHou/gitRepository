@@ -29,6 +29,13 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!--判空Utils-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+
         <!--添加fastjson 依赖包.解析json数据-->
         <dependency>
             <groupId>com.alibaba</groupId>

@@ -87,7 +87,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="date,author:Hayden,Date:2019/8/1,Date:2019/6/28,Date:2019/6/26,Author:Hayden,Date:2019/2/22" />
+      <option name="myAdditionalJavadocTags" value="date,author:Hayden,Date:2019/8/1,Date:2019/6/28,Date:2019/6/26,Author:Hayden,Date:2019/2/22,Date:2019/8/5" />
     </inspection_tool>
     <inspection_tool class="MapOrSetKeyShouldOverrideHashCodeEquals" enabled="false" level="CRITICAL" enabled_by_default="false" />
   </profile>

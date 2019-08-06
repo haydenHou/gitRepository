@@ -1,6 +1,5 @@
 package com.qbwl.aspect_demo.dataStageUtils;
 
-import com.qbwl.aspect_demo.dataStageUtils.enums.E_DATA_TYPE;
 import com.qbwl.aspect_demo.dataStageUtils.enums.E_OperationType;
 import lombok.Data;
 
@@ -19,7 +18,7 @@ public class DataStageEntity<T> {
     /**
      * 表名
      */
-    private String tableName;
+    private String methodName;
 
     /**
      * 表对应的实体类类型
@@ -31,14 +30,13 @@ public class DataStageEntity<T> {
      */
     private T args;
 
+    public DataStageEntity() {
+    }
 
-    public DataStageEntity(E_OperationType daoType,String tableType, T args) {
+    public DataStageEntity(E_OperationType daoType, String methodName, String tableType, T args) {
         this.daoType = daoType;
-        this.tableName = E_DATA_TYPE.getTableName(tableType);
+        this.methodName = methodName;
         this.tableType = tableType;
         this.args = args;
     }
-
-
-
 }
