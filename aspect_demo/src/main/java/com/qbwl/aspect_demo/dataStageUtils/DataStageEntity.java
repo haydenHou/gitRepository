@@ -3,6 +3,8 @@ package com.qbwl.aspect_demo.dataStageUtils;
 import com.qbwl.aspect_demo.dataStageUtils.enums.E_OperationType;
 import lombok.Data;
 
+import java.util.Map;
+
 /**
  * @author:Hayden
  * @Date:2019/6/26
@@ -18,7 +20,7 @@ public class DataStageEntity<T> {
     /**
      * 表名
      */
-    private String methodName;
+    private Map methodType;
 
     /**
      * 表对应的实体类类型
@@ -33,9 +35,9 @@ public class DataStageEntity<T> {
     public DataStageEntity() {
     }
 
-    public DataStageEntity(E_OperationType daoType, String methodName, String tableType, T args) {
+    public DataStageEntity(E_OperationType daoType, Map methodType, String tableType, T args) {
         this.daoType = daoType;
-        this.methodName = methodName;
+        this.methodType = methodType;
         this.tableType = tableType;
         this.args = args;
     }

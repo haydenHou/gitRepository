@@ -13,16 +13,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
-        System.out.println(user+"添加成功");
+        System.out.println("添加成功");
     }
 
     @Override
     public void updateUser(User user) {
-            System.out.println(user+"更改成功");
+        System.out.println(user+"更改成功");
     }
 
     @Override
     public void deleteUser(User user) {
-            System.out.println(user+"删除成功");
+        System.out.println(user+"删除成功");
     }
 }

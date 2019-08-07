@@ -26,6 +26,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author:Hayden
@@ -273,7 +275,15 @@ public class LogAspect {
      */
     private Object getObject(Object[] args, ProceedingJoinPoint joinPoint,E_OperationType operationType) {
         Signature signature = joinPoint.getSignature();
+//       方法类名
+        String[] methodClass = signature.getDeclaringType().toString().split(" ");
+//        获取方法名称
         String methodName = signature.getName();
+
+        Map<String,String> map = new HashMap<>();
+        map.put("methodName",methodName);
+        map.put("methodClass",methodClass[1]);
+
 
         Object obj = null;
         try {
@@ -284,15 +294,8 @@ public class LogAspect {
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        Arrays.stream(args).forEach(arg -> {
-//            try {
-//                将操作记录保存至队列
-                SqlToJsonUtil.addOperation(new DataStageEntity<>(operationType,methodName,getEntityByArg(arg),arg));
-//                logger.info("@Around环绕通知：该方法参数为[{}]",OBJECT_MAPPER.writeValueAsString(arg));
-//            } catch (JsonProcessingException e) {
-//                e.printStackTrace();
-//            }
-        });
+        Arrays.stream(args).forEach(arg -> SqlToJsonUtil.addOperation(new DataStageEntity<>(operationType,map,getEntityByArg(arg),arg)));
+
         return obj;
     }
 

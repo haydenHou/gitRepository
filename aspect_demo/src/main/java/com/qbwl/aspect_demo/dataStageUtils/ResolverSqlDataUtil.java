@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Queue;
 
 import static com.qbwl.aspect_demo.dataStageUtils.FtpEntity.sqlPath;
@@ -21,35 +23,40 @@ import static com.qbwl.aspect_demo.dataStageUtils.enums.E_OperationType.*;
 @Service
 public class ResolverSqlDataUtil {
 
-
-    @Scheduled(cron = "0/30 * * * * *")
+    private Queue<DataStageEntity<Object>> queue = SqlToJsonUtil.queue;
+    @Scheduled(cron = "0/10 * * * * *")
     private void sqlDataToTxt(){
         Object poll;
         OutputStream ops;
-        StringBuilder stringBuilder = new StringBuilder();
-        Queue<DataStageEntity<Object>> queue = SqlToJsonUtil.queue;
-
         if(queue != null){
-            System.out.println(getClass().getName()+":\t"+queue.size());
-            if(queue.size()>0){
+            while (queue.size() > 0){
                 poll = queue.poll();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String format = sdf.format(getDate());
+
                 E_OperationType daoType = ((DataStageEntity) poll).getDaoType();
                 String sqlPath = getSqlPathByTableType(daoType);
-                File file = new File(FtpEntity.sqlPath);
+                File file = new File(FtpEntity.sqlPath + format);
                 if(!file.exists()){
                     boolean mkdirs = file.mkdirs();
                 }
-                stringBuilder.append(JSON.toJSONString(poll));
+                String str = JSON.toJSONString(poll);
                 try {
                     ops = new BufferedOutputStream(new FileOutputStream(file+"/"+sqlPath,true));
-
-                    ops.write((stringBuilder+"\r").getBytes());
+                    ops.write((str+"\r").getBytes());
                     ops.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+
+    //    @Scheduled(cron ="0 00 00 * * ?")
+    @Scheduled(cron ="0 20 17 * * ?")
+    private Date getDate(){
+        return new Date();
     }
 
     /**
