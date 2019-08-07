@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhbh.jxyqyd.dao.ComBusinessDao">
+        <resultMap id="carInfo" type="com.jhbh.jxyqyd.entity.CarInfo">
+
+            <result column="buss_beautify_id"  property="bussBeautifyId" />
+            <result column="company_code"      property="companyCode"/>
+            <result column="receive_id"        property="receiveId"/>
+            <result column="progect_id"        property="progectId"/>
+            <result column="pro_beautify"      property="proBeautify"/>
+            <result column="status"            property="status"/>
+            <result column="create_time"       property="createTime"/>
+            <result column="modified_time"     property="modifiedTime"/>
+
+            <result column="buss_park_id"      property="bussParkId" />
+            <result column="park_id"           property="parkId" />
+
+            <result column="buss_parts_id"     property="bussPartsId" />
+            <result column="parts_name"        property="partsName" />
+            <result column="specification"     property="specification" />
+            <result column="number"            property="number" />
+
+            <result column="buss_service_id"   property="bussServiceId" />
+            <result column="ser_cause"         property="serCause" />
+            <result column="ser_project"       property="serProject" />
+            <result column="status"            property="status" />
+
+            <result column="car_basic_id"      property="carBasicId" />
+            <result column="owner"             property="owner" />
+            <result column="car_type"          property="carType" />
+            <result column="brand"             property="brand" />
+            <result column="color"             property="color" />
+            <result column="plate_number"      property="plateNumber" />
+            <result column="engine_number"     property="engineNumber" />
+            <result column="frame_number"      property="frameNumber" />
+
+            <result column="addinfo_acci_id"   property="addinfoAcciId"/>
+            <result column="addinfo_acci_id"   property="addinfoAcciId"/>
+            <result column="company_code"      property="companyCode"/>
+            <result column="receive_id"        property="receiveId"/>
+            <result column="accident_code"     property="accidentCode"/>
+            <result column="accident_unit"     property="accidentUnit"/>
+            <result column="damage1"           property="damage1"/>
+            <result column="damage2"           property="damage2"/>
+            <result column="damage3"           property="damage3"/>
+            <result column="reporter"          property="reporter"/>
+            <result column="report_time"       property="reportTime"/>
+            <result column="notes"             property="notes"/>
+            <result column="status"            property="status"/>
+            <result column="create_time"       property="createTime"/>
+
+            <result column="addinfo_susp_id"   property="addinfoSuspId"/>
+            <result column="company_code"      property="companyCode"  />
+            <result column="receive_id"        property="receiveId"    />
+            <result column="susp_type"         property="suspType"     />
+            <result column="susp_describe"     property="suspDescribe" />
+            <result column="reporter"          property="reporter"     />
+            <result column="report_time"       property="reportTime"   />
+            <result column="status"            property="status"       />
+            <result column="create_time"       property="createTime"   />
+            <result column="modified_time"     property="modifiedTime" />
+
+            <result column="car_coon_id"       property="carCoonId" />
+            <result column="sender"            property="sender" />
+            <result column="sender_phone"      property="senderPhone"/>
+            <result column="sender_isself"     property="senderIsself"/>
+            <result column="taker_isself"      property="takerIsself"/>
+            <result column="sender_type"       property="senderType" />
+            <result column="sender_code"       property="senderCode" />
+            <result column="acc_time"          property="accTime" />
+            <result column="appoint_time"      property="appointTime" />
+            <result column="accident_car"      property="accidentCar" />
+            <result column="suspicious_car"    property="suspiciousCar" />
+            <result column="accepter"          property="accepter" />
+            <result column="taker"             property="taker" />
+            <result column="taker_type"        property="takerType"/>
+            <result column="taker_code"        property="takerCode"/>
+            <result column="taker_phone"       property="takerPhone"/>
+            <result column="take_time"         property="takeTime"/>
+            <result column="progect_id"        property="progectId"/>
+        </resultMap>
+
+
+    <!--根据时间段统计车辆登记业务-->
+    <!--Integer countCarBasic(CarInfo carInfo)-->
+    <select id="countCarBasic" resultType="int">
+        SELECT count(*)
+        FROM car_info_basic
+        WHERE company_code=#{companyCode}
+        <if test=" startTime!=null and startTime!=''">
+            AND create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+        </if>
+        <if test=" endTime!=null and endTime!=''">
+            AND create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+        </if>
+    </select>
+    <!-- 车辆基本信息查询-->
+    <!--List<CarInfo> listCarBasicInfo(CarInfo carInfo);-->
+    <select id="listCarBasicInfo" resultMap="carInfo">
+        SELECT receive_id,car_type,brand,`owner`,color,plate_number,engine_number,frame_number,picture,create_time
+        FROM `jxy_data_db`.`car_info_basic`
+        <where>
+
+            <if test="companyCode != null and companyCode != ''">
+                company_code=#{companyCode}
+            </if>
+            <if test="receiveId!=null and receiveId!=''">
+                car_info_basic.receive_id=#{receiveId}
+            </if>
+            <if test=" startTime != null and startTime != ''">
+                AND create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime != null and endTime!=''">
+                AND create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+        </where>
+    </select>
+
+    <!--根据时间段统计收车业务-->
+    <!--int countCarSend(CarInfo carInfo)-->
+    <select id="countCarSend" resultType="int">
+        SELECT count(*)
+        FROM car_info_connect
+        JOIN  car_info_basic ON car_info_connect.receive_id = car_info_basic.receive_id
+        where car_info_connect.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_info_connect.acc_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_info_connect.acc_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+    <!--送车人信息-->
+    <!--List<CarInfo> listCarSenderInfo(CarInfo carInfo);-->
+    <select id="listCarSenderInfo" resultMap="carInfo">
+        SELECT sender_isself,sender_code,sender,sender_phone,sender_isself,accepter,car_type,car_info_connect.receive_id,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM `jxy_data_db`.`car_info_connect`
+        JOIN  car_info_basic ON car_info_connect.receive_id = car_info_basic.receive_id
+        <where>
+            <if test="companyCode !=null and companyCode != ''">
+                car_info_connect.company_code = #{companyCode}
+            </if>
+            <if test="sender!=null and sender!=''">
+                AND sender like CONCAT ('%','${sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_info_connect.acc_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_info_connect.acc_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+        </where>
+    </select>
+
+    <!--根据时间段统计取车业务-->
+    <!--int countCarBasic(CarInfo carInfo)-->
+    <select id="countCarTake" resultType="int">
+        SELECT count(*)
+        FROM car_info_connect
+        JOIN  car_info_basic ON car_info_connect.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test="startTime !=null and startTime != ''">
+                AND car_info_connect.take_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime !=null and endTime != ''">
+                AND car_info_connect.take_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+    <!-- 取车人信息-->
+    <!--List<CarInfo> listCarTakerInfo(CarInfo carInfo);-->
+    <select id="listCarTakerInfo" resultMap="carInfo">
+        SELECT taker_isself,taker,taker_code,taker_phone,taker_isself,sender,sender_phone,accepter,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM `jxy_data_db`.`car_info_connect`
+        JOIN  car_info_basic ON car_info_connect.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test="sender!=null and sender!=''">
+                sender like CONCAT ('%','#{sender}','%')
+            </if>
+            <if test="startTime != null and startTime != ''">
+                AND car_info_connect.take_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime != ''">
+                AND car_info_connect.take_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+
+    </select>
+
+    <!--根据时间段统计车辆维修业务-->
+    <!--int countCarService(CarInfo carInfo)-->
+    <select id="countCarService" resultType="int">
+        SELECT count(*)
+        FROM car_bussines_service
+        JOIN car_info_connect ON car_bussines_service.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_service.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_service.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_service.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+    <!-- 车辆维修信息-->
+    <!--List<CarInfo> listCarServiceInfo(CarInfo carInfo);-->
+    <select id="listCarServiceInfo" resultMap="carInfo">
+        SELECT progect_id,ser_cause,ser_project,sender,sender_phone,accepter,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM car_bussines_service
+        JOIN car_info_connect ON car_bussines_service.receive_id = car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_service.receive_id = car_info_basic.receive_id
+        <where>
+            <if test="receiveId!=null and receiveId!=''">
+                 car_bussines_service.receive_id=#{receiveId}
+            </if>
+            <if test="sender!=null and sender!=''">
+                sender like CONCAT ('%','#{sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_service.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_service.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+        </where>
+    </select>
+
+    <!--根据时间段统计车辆配件业务-->
+    <!--int countCarParts(CarInfo carInfo)-->
+    <select id="countCarParts" resultType="int">
+        SELECT count(*)
+        FROM car_bussines_parts
+        JOIN car_info_connect ON car_bussines_parts.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_parts.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_parts.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_parts.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+    <!-- 车辆配件信息-->
+    <!--List<CarInfo> listCarPartsInfo(CarInfo carInfo);-->
+    <select id="listCarPartsInfo" resultMap="carInfo">
+        SELECT car_bussines_parts.receive_id,progect_id,parts_name,specification,notes,number,sender,sender_phone,accepter,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM car_bussines_parts
+        JOIN car_info_connect ON car_bussines_parts.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_parts.receive_id = car_info_basic.receive_id
+        <where>
+            <if test="receiveId!=null and receiveId!=''">
+                car_bussines_parts.receive_id=#{receiveId}
+            </if>
+            <if test="sender!=null and sender!=''">
+                sender like CONCAT ('%','#{sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_parts.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_parts.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+        </where>
+    </select>
+
+    <!--根据时间段统计车辆美容业务-->
+    <!--int countCarBeauty(CarInfo carInfo);-->
+    <select id="countCarBeauty" resultType="int">
+        SELECT count(*)
+        FROM car_bussines_beautify
+        JOIN car_info_connect ON car_bussines_beautify.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_beautify.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_beautify.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_beautify.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+    <!-- 车辆美容信息-->
+    <!--List<CarInfo> listCarBeautyInfo(CarInfo carInfo);-->
+    <select id="listCarBeautyInfo" resultMap="carInfo">
+        SELECT car_bussines_beautify.receive_id,progect_id,pro_beautify,notes,sender,sender_phone,accepter,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM car_bussines_beautify
+        JOIN car_info_connect ON car_bussines_beautify.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_beautify.receive_id = car_info_basic.receive_id
+        <where>
+            <if test="receiveId!=null and receiveId!=''">
+                car_bussines_beautify.receive_id=#{receiveId}
+            </if>
+            <if test="sender!=null and sender!=''">
+                sender like CONCAT ('%','#{sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_beautify.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_beautify.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+        </where>
+    </select>
+
+    <!--根据时间段统计车辆停放业务-->
+    <!--int countCarPark(CarInfo carInfo)-->
+    <select id="countCarPark" resultType="int">
+        SELECT count(*)
+        FROM car_bussines_park
+        JOIN car_info_connect ON car_bussines_park.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_park.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_park.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_park.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+
+    <!-- 车辆停放信息-->
+    <!--List<CarInfo> listCarParkInfo(CarInfo carInfo);-->
+    <select id="listCarParkInfo" resultMap="carInfo">
+        SELECT car_bussines_park.receive_id,park_id,notes,sender,sender_phone,accepter,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM car_bussines_park
+        JOIN car_info_connect ON car_bussines_park.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_bussines_park.receive_id = car_info_basic.receive_id
+        <where>
+            <if test="receiveId!=null and receiveId!=''">
+                car_bussines_park.receive_id=#{receiveId}
+            </if>
+            <if test="sender!=null and sender!=''">
+                sender like CONCAT ('%','#{sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_bussines_park.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_bussines_park.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+        </where>
+    </select>
+
+    <!--根据时间段统计事故车辆业务-->
+    <!--int countCarAccident(CarInfo carInfo)-->
+    <select id="countCarAccident" resultType="int">
+        SELECT count(*)
+        FROM `jxy_data_db`.`car_addinfo_accident`
+         JOIN car_info_connect ON car_addinfo_accident.receive_id = car_info_connect.receive_id
+         JOIN car_info_basic ON car_addinfo_accident.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_addinfo_accident.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_addinfo_accident.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+
+    <!-- 车辆事故信息-->
+    <!--List<CarInfo> listCarAccidentInfo(CarInfo carInfo);-->
+    <select id="listCarAccidentInfo" resultMap="carInfo">
+        SELECT accident_code,accident_unit,damage1,sender,sender_phone,reporter,notes,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM `jxy_data_db`.`car_addinfo_accident`
+         JOIN car_info_connect ON car_addinfo_accident.receive_id=car_info_connect.receive_id
+         JOIN car_info_basic ON car_addinfo_accident.receive_id = car_info_basic.receive_id
+         where car_info_basic.company_code = #{companyCode}
+            <if test="receiveId!=null and receiveId!=''">
+              and  car_addinfo_accident.receive_id=#{receiveId}
+            </if>
+            <if test="sender!=null and sender!=''">
+              and  sender like CONCAT ('%','#{sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_addinfo_accident.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_addinfo_accident.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+
+    <!--根据时间段统计可疑车辆业务-->
+    <!--int countCarSuspicious(CarInfo carInfo)-->
+    <select id="countCarSuspicious" resultType="int">
+        SELECT count(*)
+        FROM `jxy_data_db`.`car_addinfo_suspicious`
+        JOIN car_info_connect ON car_addinfo_suspicious.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_addinfo_suspicious.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test=" startTime!=null and startTime!=''">
+                AND car_addinfo_suspicious.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_addinfo_suspicious.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+    <!-- 可疑车辆信息-->
+    <!--List<CarInfo> listCarSuspiciousInfo(CarInfo carInfo);-->
+    <select id="listCarSuspiciousInfo" resultMap="carInfo">
+        SELECT susp_type,susp_describe,sender,sender_phone,reporter,car_info_connect.receive_id,car_type ,brand,`owner`,color,plate_number ,engine_number,frame_number,picture
+        FROM `jxy_data_db`.`car_addinfo_suspicious`
+        JOIN car_info_connect ON car_addinfo_suspicious.receive_id=car_info_connect.receive_id
+        JOIN car_info_basic ON car_addinfo_suspicious.receive_id = car_info_basic.receive_id
+        where car_info_basic.company_code = #{companyCode}
+            <if test="receiveId!=null and receiveId!=''">
+              and  car_addinfo_suspicious.receive_id=#{receiveId}
+            </if>
+            <if test="sender!=null and sender!=''">
+              and  sender like CONCAT ('%','${sender}','%')
+            </if>
+            <if test=" startTime!=null and startTime!=''">
+                AND car_addinfo_suspicious.create_time &gt;= CONCAT('','${startTime}',' 00:00:00')
+            </if>
+            <if test=" endTime!=null and endTime!=''">
+                AND car_addinfo_suspicious.create_time &lt;= CONCAT('','${endTime}',' 23:59:59')
+            </if>
+    </select>
+
+
+    <select id="listCarBasicAndConnectInfo" resultMap="carInfo">
+            SELECT
+               car_info_basic.receive_id,car_type,brand,`owner`,color,plate_number,engine_number,frame_number,
+               picture,taker,taker_phone,sender,sender_phone,car_info_basic.create_time
+            FROM `jxy_data_db`.`car_info_basic`
+            JOIN car_info_connect ON  car_info_basic.receive_id = car_info_connect.receive_id
+            WHERE
+                car_info_basic.company_code = #{companyCode}
+                <if test="receiveId!=null and receiveId!=''">
+                    AND  car_info_basic.receive_id=#{receiveId}
+                </if>
+                <if test=" owner!=null and owner!=''">
+                    AND owner LIKE CONCAT('%','${owner}','%')
+                </if>
+                <if test=" carType!=null and carType!=''">
+                    AND car_type = #{carType}
+                </if>
+                <if test="createTime!=null and createTime!=''">
+                    AND car_info_basic.create_time LIKE CONCAT('%','${createTime}','%')
+                </if>
+                <if test=" brand!=null and brand!=''">
+                    AND brand LIKE CONCAT('%','${brand}','%')
+                </if>
+                <if test=" plateNumber!=null and plateNumber!=''">
+                    AND plate_number LIKE CONCAT('%','${plateNumber}','%')
+                </if>
+    </select>
+
+    <!--//    根据登记序号获取相关业务信息-->
+    <!--根据登记序号获取车辆基本信息-->
+    <!--CarInfo getBasicInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getBasicInfoByReceiveId" resultMap="carInfo">
+      SELECT
+        car_basic_id,`receive_id`, `owner`, `car_type`, `brand`, `color`, `plate_number`, `engine_number`, `frame_number`,picture
+      FROM car_info_basic
+      WHERE receive_id = #{receiveId};
+    </select>
+
+    <!--根据登记序号获取送车基本信息-->
+    <!--CarInfo getSenderInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getSenderInfoByReceiveId" resultMap="carInfo">
+      SELECT car_coon_id, `sender`, `sender_type`, `sender_code`, `sender_phone`, `acc_time`, `appoint_time`, `accident_car`, `suspicious_car`, `accepter`
+      FROM `jxy_data_db`.`car_info_connect`
+      WHERE receive_id = #{receiveId};
+    </select>
+
+
+    <!--根据登记序号获取取车基本信息-->
+    <!--CarInfo getTakerInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getTakerInfoByReceiveId" resultMap="carInfo">
+      SELECT car_coon_id, taker,taker_type,taker_code,taker_phone,taker_isself,take_time, `accepter`
+      FROM `jxy_data_db`.`car_info_connect`
+      WHERE receive_id = #{receiveId};
+    </select>
+
+
+    <!--根据登记序号获取维修基本信息-->
+    <!--CarInfo getServiceInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getServiceInfoByReceiveId" resultMap="carInfo">
+       SELECT buss_service_id,progect_id,ser_cause,ser_project,notes
+       FROM `jxy_data_db`.`car_bussines_service`
+       WHERE receive_id = #{receiveId};
+    </select>
+
+
+    <!--根据登记序号获取配件基本信息-->
+    <!--CarInfo getPartsInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getPartsInfoByReceiveId" resultMap="carInfo">
+      SELECT buss_parts_id,progect_id,parts_name,specification,number,notes,`status`
+      FROM `jxy_data_db`.`car_bussines_parts`
+      WHERE receive_id = #{receiveId};
+    </select>
+
+    <!--根据登记序号获取美容基本信息-->
+    <!--CarInfo getBeautyInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getBeautyInfoByReceiveId" resultMap="carInfo">
+       SELECT buss_beautify_id,progect_id,pro_beautify,notes,`status`
+       FROM `jxy_data_db`.`car_bussines_beautify`
+       WHERE receive_id = #{receiveId};
+    </select>
+
+    <!--根据登记序号获取停放基本信息-->
+    <!--CarInfo getParkInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getParkInfoByReceiveId" resultMap="carInfo">
+       SELECT buss_park_id,park_id,notes,`status`
+       FROM `jxy_data_db`.`car_bussines_park`
+       WHERE receive_id = #{receiveId};
+    </select>
+
+    <!--根据登记序号获取事故车辆基本信息-->
+    <!--CarInfo getAAInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getAAInfoByReceiveId" resultMap="carInfo">
+       SELECT addinfo_acci_id,accident_code,accident_unit,damage1,reporter,report_time,notes,`status`
+       FROM `jxy_data_db`.`car_addinfo_accident`
+       WHERE receive_id = #{receiveId};
+    </select>
+
+
+    <!--根据登记序号获取可疑车辆基本信息-->
+    <!--CarInfo getAsInfoByReceiveId(CarInfo carInfo);-->
+    <select id="getAsInfoByReceiveId" resultMap="carInfo">
+       SELECT addinfo_susp_id,susp_type,susp_describe,reporter,report_time,`status`
+       FROM `jxy_data_db`.`car_addinfo_suspicious`
+       WHERE receive_id = #{receiveId};
+    </select>
+
+</mapper>    

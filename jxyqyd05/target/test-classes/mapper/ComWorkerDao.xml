@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhbh.jxyqyd.dao.ComWorkerDao">
+    <select id="listWorkerByStatus" resultType="com.jhbh.jxyqyd.entity.ComServiceWorkers">
+    SELECT
+    worker_id workerId,company_code companyCode,worker_code workerCode,
+    `name`,sex,contway,photo,now_address nowAddress,degree,idcode,
+    register_address registerAddress,residence_permit residencePermit,entry,
+    `leave`
+    FROM
+    com_service_workers
+    WHERE
+        company_code=#{companyCode}
+    <if test="status!=null and status!=''">
+      AND status=#{status}
+    </if>
+
+    </select>
+
+
+</mapper>    

@@ -1,0 +1,93 @@
+spring:
+  profiles:
+    active: dev
+
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 10MB
+
+  jpa:
+    show-sql: true
+
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML
+
+#分页查询
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+mybatis:
+  type-aliases-package: com.jhbh.jxyqyd.entity.*
+  mapper-locations: classpath:mapper/*.xml
+
+---
+#开发环境
+server:
+  port: 81
+spring:
+  profiles: dev
+  datasource:
+      url: jdbc:mysql:///jxy_data_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://111.21.51.70:3306/jxy_data_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    username: develop
+#    password: develop
+#    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+logging:
+  config: classpath:logback-spring-dev.xml
+
+---
+#测试环境
+spring:
+  profiles: uat
+  datasource:
+      url: jdbc:mysql://172.16.1.228:3306/jxy_data_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#      url: jdbc:mysql://111.21.51.70:3306/jxy_data_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: develop
+      password: develop
+      driverClassName: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 86
+logging:
+  config: classpath:logback-spring-uat.xml
+
+---
+#生产环境
+spring:
+  profiles: prod
+  datasource:
+      url: jdbc:mysql://172.16.1.228:3306/jxy_data_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: develop
+      password: develop
+      driverClassName: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+
+server:
+  port: 88
+#logging.config=classpath:logback-spring-dev.xml
+logging:
+  config: classpath:logback-spring-prod.xml
+
