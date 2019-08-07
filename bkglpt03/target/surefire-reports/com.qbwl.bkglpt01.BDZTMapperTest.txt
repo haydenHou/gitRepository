@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.qbwl.bkglpt01.BDZTMapperTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.002 s - in com.qbwl.bkglpt01.BDZTMapperTest
