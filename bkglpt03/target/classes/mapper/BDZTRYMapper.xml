@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qbwl.bkglpt02.dao.BDZTRYMapper">
+  <resultMap id="BaseResultMap" type="com.qbwl.bkglpt02.entity.BDZTRY">
+    <constructor>
+      <idArg column="R_RYBH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_JZ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_XM" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_BMCH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_XB" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_CSRQ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_CSRQSX" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_SFZH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_HJDQH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_HJDXZ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_XZDQH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_XZDXZ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_QTZJ1_M" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_QTZJ1_H" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_QTZJ2_M" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_QTZJ2_H" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_SF"      javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_SG"      javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="R_LX"      javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TX"      javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_KY"      javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="R_TBBJ1_BW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ1_FW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ1_SL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ1_BJ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ2_BW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ2_FW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ2_SL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ2_BJ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ3_BW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ3_FW" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ3_SL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TBBJ3_BJ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TSTZ1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TSTZ2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TSTZ3" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_AJBH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_AJLB" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_SH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_ZTLX" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_JYAQ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TPRQ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TPFX" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_FLSD" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_DBJB" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TJLJB" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_JJ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TJRQ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TJDWQH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TJND" javaType="java.lang.Short" jdbcType="DECIMAL" />
+      <arg column="R_TJSXH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_TJJB" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_LADWQH" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_LADWXC" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_ZBR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_LXFS" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_DJRQ" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_DJR" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="R_STATUS" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    R_RYBH, R_JZ, R_XM, R_BMCH, R_XB, R_CSRQ, R_CSRQSX, R_SFZH, R_HJDQH, R_HJDXZ, R_XZDQH, 
+    R_XZDXZ, R_QTZJ1_M, R_QTZJ1_H, R_QTZJ2_M, R_QTZJ2_H, R_SF, R_SG, R_LX, R_TX, R_KY, 
+    R_TBBJ1_BW, R_TBBJ1_FW, R_TBBJ1_SL, R_TBBJ1_BJ, R_TBBJ2_BW, R_TBBJ2_FW, R_TBBJ2_SL, 
+    R_TBBJ2_BJ, R_TBBJ3_BW, R_TBBJ3_FW, R_TBBJ3_SL, R_TBBJ3_BJ, R_TSTZ1, R_TSTZ2, R_TSTZ3, 
+    R_AJBH, R_AJLB, R_SH, R_ZTLX, R_JYAQ, R_TPRQ, R_TPFX, R_FLSD, R_DBJB, R_TJLJB, R_JJ, 
+    R_TJRQ, R_TJDWQH, R_TJND, R_TJSXH, R_TJJB, R_LADWQH, R_LADWXC, R_ZBR, R_LXFS, R_DJRQ, 
+    R_DJR,R_STATUS
+  </sql>
+
+  <select id="getByPrimaryKey"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from T_BD_ZTRY
+    where R_RYBH = #{rybh,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_BD_ZTRY
+    where R_RYBH = #{rybh,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.qbwl.bkglpt02.entity.BDZTRY">
+    insert into T_BD_ZTRY (R_RYBH, R_JZ, R_XM, 
+      R_BMCH, R_XB, R_CSRQ, 
+      R_CSRQSX, R_SFZH, R_HJDQH, 
+      R_HJDXZ, R_XZDQH, R_XZDXZ, 
+      R_QTZJ1_M, R_QTZJ1_H, R_QTZJ2_M, 
+      R_QTZJ2_H, R_SF, R_SG, 
+      R_LX, R_TX, R_KY, R_TBBJ1_BW, 
+      R_TBBJ1_FW, R_TBBJ1_SL, R_TBBJ1_BJ, 
+      R_TBBJ2_BW, R_TBBJ2_FW, R_TBBJ2_SL, 
+      R_TBBJ2_BJ, R_TBBJ3_BW, R_TBBJ3_FW, 
+      R_TBBJ3_SL, R_TBBJ3_BJ, R_TSTZ1, 
+      R_TSTZ2, R_TSTZ3, R_AJBH, 
+      R_AJLB, R_SH, R_ZTLX, 
+      R_JYAQ, R_TPRQ, R_TPFX, 
+      R_FLSD, R_DBJB, R_TJLJB, 
+      R_JJ, R_TJRQ, R_TJDWQH, 
+      R_TJND, R_TJSXH, R_TJJB, 
+      R_LADWQH, R_LADWXC, R_ZBR, 
+      R_LXFS, R_DJRQ, R_DJR)
+    values (XL.nextval, #{jz,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR},
+      #{bmch,jdbcType=VARCHAR}, #{xb,jdbcType=VARCHAR}, #{csrq,jdbcType=VARCHAR}, 
+      #{csrqsx,jdbcType=VARCHAR}, #{sfzh,jdbcType=VARCHAR}, #{hjdqh,jdbcType=VARCHAR}, 
+      #{hjdxz,jdbcType=VARCHAR}, #{xzdqh,jdbcType=VARCHAR}, #{xzdxz,jdbcType=VARCHAR}, 
+      #{qtzj1m,jdbcType=VARCHAR}, #{qtzj1h,jdbcType=VARCHAR}, #{qtzj2m,jdbcType=VARCHAR}, 
+      #{qtzj2h,jdbcType=VARCHAR}, #{sf,jdbcType=VARCHAR}, #{sg,jdbcType=DECIMAL}, 
+      #{lx,jdbcType=VARCHAR}, #{tx,jdbcType=VARCHAR}, #{ky,jdbcType=CHAR}, #{qtzj1bw,jdbcType=VARCHAR}, 
+      #{tbbj1fw,jdbcType=VARCHAR}, #{tbbj1sl,jdbcType=VARCHAR}, #{tbbj1bj,jdbcType=VARCHAR}, 
+      #{tbbj2bw,jdbcType=VARCHAR}, #{tbbj2fw,jdbcType=VARCHAR}, #{tbbj2sl,jdbcType=VARCHAR}, 
+      #{tbbj2bj,jdbcType=VARCHAR}, #{tbbj3bw,jdbcType=VARCHAR}, #{tbbj3fw,jdbcType=VARCHAR}, 
+      #{tbbj3sl,jdbcType=VARCHAR}, #{tbbj3bj,jdbcType=VARCHAR}, #{tstz1,jdbcType=VARCHAR}, 
+      #{tstz2,jdbcType=VARCHAR}, #{tstz3,jdbcType=VARCHAR}, #{ajbh,jdbcType=VARCHAR}, 
+      #{ajlb,jdbcType=VARCHAR}, #{sh,jdbcType=VARCHAR}, #{ztlx,jdbcType=VARCHAR}, 
+      #{jyaq,jdbcType=VARCHAR}, #{tprq,jdbcType=VARCHAR}, #{tpfx,jdbcType=VARCHAR}, 
+      #{flsd,jdbcType=VARCHAR}, #{dbjb,jdbcType=VARCHAR}, #{tjljb,jdbcType=VARCHAR}, 
+      #{jj,jdbcType=VARCHAR}, #{tjrq,jdbcType=VARCHAR}, #{tjdwqh,jdbcType=VARCHAR}, 
+      #{tjnd,jdbcType=DECIMAL}, #{tjsxh,jdbcType=VARCHAR}, #{tjjb,jdbcType=VARCHAR}, 
+      #{ladwqh,jdbcType=VARCHAR}, #{ladwxc,jdbcType=VARCHAR}, #{zbr,jdbcType=VARCHAR}, 
+      #{lxfs,jdbcType=VARCHAR}, #{djrq,jdbcType=VARCHAR}, #{djr,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.qbwl.bkglpt02.entity.BDZTRY">
+    insert into T_BD_ZTRY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rybh != null">
+        R_RYBH,
+      </if>
+      <if test="jz != null">
+        R_JZ,
+      </if>
+      <if test="xm != null">
+        R_XM,
+      </if>
+      <if test="bmch != null">
+        R_BMCH,
+      </if>
+      <if test="xb != null">
+        R_XB,
+      </if>
+      <if test="csrq != null">
+        R_CSRQ,
+      </if>
+      <if test="csrqsx != null">
+        R_CSRQSX,
+      </if>
+      <if test="sfzh != null">
+        R_SFZH,
+      </if>
+      <if test="hjdqh != null">
+        R_HJDQH,
+      </if>
+      <if test="hjdxz != null">
+        R_HJDXZ,
+      </if>
+      <if test="xzdqh != null">
+        R_XZDQH,
+      </if>
+      <if test="xzdxz != null">
+        R_XZDXZ,
+      </if>
+      <if test="qtzj1m != null">
+        R_QTZJ1_M,
+      </if>
+      <if test="qtzj1h != null">
+        R_QTZJ1_H,
+      </if>
+      <if test="qtzj2m != null">
+        R_QTZJ2_M,
+      </if>
+      <if test="qtzj2h != null">
+        R_QTZJ2_H,
+      </if>
+      <if test="sf != null">
+        R_SF,
+      </if>
+      <if test="sg != null">
+        R_SG,
+      </if>
+      <if test="lx != null">
+        R_LX,
+      </if>
+      <if test="tx != null">
+        R_TX,
+      </if>
+      <if test="ky != null">
+        R_KY,
+      </if>
+      <if test="qtzj1bw != null">
+        R_TBBJ1_BW,
+      </if>
+      <if test="tbbj1fw != null">
+        R_TBBJ1_FW,
+      </if>
+      <if test="tbbj1sl != null">
+        R_TBBJ1_SL,
+      </if>
+      <if test="tbbj1bj != null">
+        R_TBBJ1_BJ,
+      </if>
+      <if test="tbbj2bw != null">
+        R_TBBJ2_BW,
+      </if>
+      <if test="tbbj2fw != null">
+        R_TBBJ2_FW,
+      </if>
+      <if test="tbbj2sl != null">
+        R_TBBJ2_SL,
+      </if>
+      <if test="tbbj2bj != null">
+        R_TBBJ2_BJ,
+      </if>
+      <if test="tbbj3bw != null">
+        R_TBBJ3_BW,
+      </if>
+      <if test="tbbj3fw != null">
+        R_TBBJ3_FW,
+      </if>
+      <if test="tbbj3sl != null">
+        R_TBBJ3_SL,
+      </if>
+      <if test="tbbj3bj != null">
+        R_TBBJ3_BJ,
+      </if>
+      <if test="tstz1 != null">
+        R_TSTZ1,
+      </if>
+      <if test="tstz2 != null">
+        R_TSTZ2,
+      </if>
+      <if test="tstz3 != null">
+        R_TSTZ3,
+      </if>
+      <if test="ajbh != null">
+        R_AJBH,
+      </if>
+      <if test="ajlb != null">
+        R_AJLB,
+      </if>
+      <if test="sh != null">
+        R_SH,
+      </if>
+      <if test="ztlx != null">
+        R_ZTLX,
+      </if>
+      <if test="jyaq != null">
+        R_JYAQ,
+      </if>
+      <if test="tprq != null">
+        R_TPRQ,
+      </if>
+      <if test="tpfx != null">
+        R_TPFX,
+      </if>
+      <if test="flsd != null">
+        R_FLSD,
+      </if>
+      <if test="dbjb != null">
+        R_DBJB,
+      </if>
+      <if test="tjljb != null">
+        R_TJLJB,
+      </if>
+      <if test="jj != null">
+        R_JJ,
+      </if>
+      <if test="tjrq != null">
+        R_TJRQ,
+      </if>
+      <if test="tjdwqh != null">
+        R_TJDWQH,
+      </if>
+      <if test="tjnd != null">
+        R_TJND,
+      </if>
+      <if test="tjsxh != null">
+        R_TJSXH,
+      </if>
+      <if test="tjjb != null">
+        R_TJJB,
+      </if>
+      <if test="ladwqh != null">
+        R_LADWQH,
+      </if>
+      <if test="ladwxc != null">
+        R_LADWXC,
+      </if>
+      <if test="zbr != null">
+        R_ZBR,
+      </if>
+      <if test="lxfs != null">
+        R_LXFS,
+      </if>
+      <if test="djrq != null">
+        R_DJRQ,
+      </if>
+      <if test="djr != null">
+        R_DJR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rybh != null">
+        #{rybh,jdbcType=VARCHAR},
+      </if>
+      <if test="jz != null">
+        #{jz,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="bmch != null">
+        #{bmch,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null">
+        #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="csrqsx != null">
+        #{csrqsx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzh != null">
+        #{sfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="hjdqh != null">
+        #{hjdqh,jdbcType=VARCHAR},
+      </if>
+      <if test="hjdxz != null">
+        #{hjdxz,jdbcType=VARCHAR},
+      </if>
+      <if test="xzdqh != null">
+        #{xzdqh,jdbcType=VARCHAR},
+      </if>
+      <if test="xzdxz != null">
+        #{xzdxz,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj1m != null">
+        #{qtzj1m,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj1h != null">
+        #{qtzj1h,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj2m != null">
+        #{qtzj2m,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj2h != null">
+        #{qtzj2h,jdbcType=VARCHAR},
+      </if>
+      <if test="sf != null">
+        #{sf,jdbcType=VARCHAR},
+      </if>
+      <if test="sg != null">
+        #{sg,jdbcType=DECIMAL},
+      </if>
+      <if test="lx != null">
+        #{lx,jdbcType=VARCHAR},
+      </if>
+      <if test="tx != null">
+        #{tx,jdbcType=VARCHAR},
+      </if>
+      <if test="ky != null">
+        #{ky,jdbcType=CHAR},
+      </if>
+      <if test="qtzj1bw != null">
+        #{qtzj1bw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj1fw != null">
+        #{tbbj1fw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj1sl != null">
+        #{tbbj1sl,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj1bj != null">
+        #{tbbj1bj,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2bw != null">
+        #{tbbj2bw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2fw != null">
+        #{tbbj2fw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2sl != null">
+        #{tbbj2sl,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2bj != null">
+        #{tbbj2bj,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3bw != null">
+        #{tbbj3bw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3fw != null">
+        #{tbbj3fw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3sl != null">
+        #{tbbj3sl,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3bj != null">
+        #{tbbj3bj,jdbcType=VARCHAR},
+      </if>
+      <if test="tstz1 != null">
+        #{tstz1,jdbcType=VARCHAR},
+      </if>
+      <if test="tstz2 != null">
+        #{tstz2,jdbcType=VARCHAR},
+      </if>
+      <if test="tstz3 != null">
+        #{tstz3,jdbcType=VARCHAR},
+      </if>
+      <if test="ajbh != null">
+        #{ajbh,jdbcType=VARCHAR},
+      </if>
+      <if test="ajlb != null">
+        #{ajlb,jdbcType=VARCHAR},
+      </if>
+      <if test="sh != null">
+        #{sh,jdbcType=VARCHAR},
+      </if>
+      <if test="ztlx != null">
+        #{ztlx,jdbcType=VARCHAR},
+      </if>
+      <if test="jyaq != null">
+        #{jyaq,jdbcType=VARCHAR},
+      </if>
+      <if test="tprq != null">
+        #{tprq,jdbcType=VARCHAR},
+      </if>
+      <if test="tpfx != null">
+        #{tpfx,jdbcType=VARCHAR},
+      </if>
+      <if test="flsd != null">
+        #{flsd,jdbcType=VARCHAR},
+      </if>
+      <if test="dbjb != null">
+        #{dbjb,jdbcType=VARCHAR},
+      </if>
+      <if test="tjljb != null">
+        #{tjljb,jdbcType=VARCHAR},
+      </if>
+      <if test="jj != null">
+        #{jj,jdbcType=VARCHAR},
+      </if>
+      <if test="tjrq != null">
+        #{tjrq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjdwqh != null">
+        #{tjdwqh,jdbcType=VARCHAR},
+      </if>
+      <if test="tjnd != null">
+        #{tjnd,jdbcType=DECIMAL},
+      </if>
+      <if test="tjsxh != null">
+        #{tjsxh,jdbcType=VARCHAR},
+      </if>
+      <if test="tjjb != null">
+        #{tjjb,jdbcType=VARCHAR},
+      </if>
+      <if test="ladwqh != null">
+        #{ladwqh,jdbcType=VARCHAR},
+      </if>
+      <if test="ladwxc != null">
+        #{ladwxc,jdbcType=VARCHAR},
+      </if>
+      <if test="zbr != null">
+        #{zbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null">
+        #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="djrq != null">
+        #{djrq,jdbcType=VARCHAR},
+      </if>
+      <if test="djr != null">
+        #{djr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.qbwl.bkglpt02.entity.BDZTRY">
+    update T_BD_ZTRY
+    <set>
+      <if test="jz != null and jz !=''">
+        R_JZ = #{jz,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null and xm !=''">
+        R_XM = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="bmch != null and bmch !=''">
+        R_BMCH = #{bmch,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null and xb !=''">
+        R_XB = #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null and csrq !=''">
+        R_CSRQ = #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="csrqsx != null and csrqsx !=''">
+        R_CSRQSX = #{csrqsx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzh != null and  sfzh !=''">
+        R_SFZH = #{sfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="hjdqh != null and hjdqh !=''">
+        R_HJDQH = #{hjdqh,jdbcType=VARCHAR},
+      </if>
+      <if test="hjdxz != null and hjdxz !=''">
+        R_HJDXZ = #{hjdxz,jdbcType=VARCHAR},
+      </if>
+      <if test="xzdqh != null and xzdqh !=''">
+        R_XZDQH = #{xzdqh,jdbcType=VARCHAR},
+      </if>
+      <if test="xzdxz != null and  xzdxz !=''">
+        R_XZDXZ = #{xzdxz,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj1m != null and qtzj1m !=''">
+        R_QTZJ1_M = #{qtzj1m,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj1h != null and  qtzj1h !=''">
+        R_QTZJ1_H = #{qtzj1h,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj2m != null and qtzj2m !=''">
+        R_QTZJ2_M = #{qtzj2m,jdbcType=VARCHAR},
+      </if>
+      <if test="qtzj2h != null and qtzj2h !=''">
+        R_QTZJ2_H = #{qtzj2h,jdbcType=VARCHAR},
+      </if>
+      <if test="sf != null and sf !=''">
+        R_SF = #{sf,jdbcType=VARCHAR},
+      </if>
+      <if test="sg != null and sg !=''">
+        R_SG = #{sg,jdbcType=DECIMAL},
+      </if>
+      <if test="lx != null and lx !=''">
+        R_LX = #{lx,jdbcType=VARCHAR},
+      </if>
+      <if test="tx != null and tx !=''">
+        R_TX = #{tx,jdbcType=VARCHAR},
+      </if>
+      <if test="ky != null and ky !=''">
+        R_KY = #{ky,jdbcType=CHAR},
+      </if>
+      <if test="qtzj1bw != null and qtzj1bw !=''">
+        R_TBBJ1_BW = #{qtzj1bw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj1fw != null and tbbj1fw !=''">
+        R_TBBJ1_FW = #{tbbj1fw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj1sl != null and tbbj1sl !=''">
+        R_TBBJ1_SL = #{tbbj1sl,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj1bj != null and tbbj1bj !=''">
+        R_TBBJ1_BJ = #{tbbj1bj,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2bw != null and tbbj2bw !=''">
+        R_TBBJ2_BW = #{tbbj2bw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2fw != null and tbbj2fw !=''">
+        R_TBBJ2_FW = #{tbbj2fw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2sl != null and tbbj2sl !=''">
+        R_TBBJ2_SL = #{tbbj2sl,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj2bj != null and tbbj2bj !=''">
+        R_TBBJ2_BJ = #{tbbj2bj,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3bw != null and tbbj3bw !=''">
+        R_TBBJ3_BW = #{tbbj3bw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3fw != null and tbbj3fw !=''">
+        R_TBBJ3_FW = #{tbbj3fw,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3sl != null and tbbj3sl !=''">
+        R_TBBJ3_SL = #{tbbj3sl,jdbcType=VARCHAR},
+      </if>
+      <if test="tbbj3bj != null and tbbj3bj !=''">
+        R_TBBJ3_BJ = #{tbbj3bj,jdbcType=VARCHAR},
+      </if>
+      <if test="tstz1 != null and tstz1 !=''">
+        R_TSTZ1 = #{tstz1,jdbcType=VARCHAR},
+      </if>
+      <if test="tstz2 != null and tstz2 !=''">
+        R_TSTZ2 = #{tstz2,jdbcType=VARCHAR},
+      </if>
+      <if test="tstz3 != null and tstz3 !=''">
+        R_TSTZ3 = #{tstz3,jdbcType=VARCHAR},
+      </if>
+      <if test="ajbh != null and ajbh !=''">
+        R_AJBH = #{ajbh,jdbcType=VARCHAR},
+      </if>
+      <if test="ajlb != null and ajlb !=''">
+        R_AJLB = #{ajlb,jdbcType=VARCHAR},
+      </if>
+      <if test="sh != null and sh !=''">
+        R_SH = #{sh,jdbcType=VARCHAR},
+      </if>
+      <if test="ztlx != null and ztlx !=''">
+        R_ZTLX = #{ztlx,jdbcType=VARCHAR},
+      </if>
+      <if test="jyaq != null and jyaq !=''">
+        R_JYAQ = #{jyaq,jdbcType=VARCHAR},
+      </if>
+      <if test="tprq != null and tprq !=''">
+        R_TPRQ = #{tprq,jdbcType=VARCHAR},
+      </if>
+      <if test="tpfx != null and tpfx !=''">
+        R_TPFX = #{tpfx,jdbcType=VARCHAR},
+      </if>
+      <if test="flsd != null and flsd !=''">
+        R_FLSD = #{flsd,jdbcType=VARCHAR},
+      </if>
+      <if test="dbjb != null and dbjb !=''">
+        R_DBJB = #{dbjb,jdbcType=VARCHAR},
+      </if>
+      <if test="tjljb != null and tjljb !=''">
+        R_TJLJB = #{tjljb,jdbcType=VARCHAR},
+      </if>
+      <if test="jj != null and jj !=''">
+        R_JJ = #{jj,jdbcType=VARCHAR},
+      </if>
+      <if test="tjrq != null and tjrq !=''">
+        R_TJRQ = #{tjrq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjdwqh != null and tjdwqh !=''">
+        R_TJDWQH = #{tjdwqh,jdbcType=VARCHAR},
+      </if>
+      <if test="tjnd != null and tjnd !=''">
+        R_TJND = #{tjnd,jdbcType=DECIMAL},
+      </if>
+      <if test="tjsxh != null and  tjsxh !=''">
+        R_TJSXH = #{tjsxh,jdbcType=VARCHAR},
+      </if>
+      <if test="tjjb != null and  tjjb !=''">
+        R_TJJB = #{tjjb,jdbcType=VARCHAR},
+      </if>
+      <if test="ladwqh != null and ladwqh !=''">
+        R_LADWQH = #{ladwqh,jdbcType=VARCHAR},
+      </if>
+      <if test="ladwxc != null and ladwxc !=''">
+        R_LADWXC = #{ladwxc,jdbcType=VARCHAR},
+      </if>
+      <if test="zbr != null and  zbr !=''">
+        R_ZBR = #{zbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null and  lxfs !=''">
+        R_LXFS = #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="djrq != null and djrq !=''">
+        R_DJRQ = #{djrq,jdbcType=VARCHAR},
+      </if>
+      <if test="djr != null and djr !=''">
+        R_DJR = #{djr,jdbcType=VARCHAR},
+      </if>
+--     测试新增
+      <if test="status != null and status !=''">
+       R_STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where R_RYBH = #{rybh,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.qbwl.bkglpt02.entity.BDZTRY">
+    update T_BD_ZTRY
+    set R_JZ = #{jz,jdbcType=VARCHAR},
+      R_XM = #{xm,jdbcType=VARCHAR},
+      R_BMCH = #{bmch,jdbcType=VARCHAR},
+      R_XB = #{xb,jdbcType=VARCHAR},
+      R_CSRQ = #{csrq,jdbcType=VARCHAR},
+      R_CSRQSX = #{csrqsx,jdbcType=VARCHAR},
+      R_SFZH = #{sfzh,jdbcType=VARCHAR},
+      R_HJDQH = #{hjdqh,jdbcType=VARCHAR},
+      R_HJDXZ = #{hjdxz,jdbcType=VARCHAR},
+      R_XZDQH = #{xzdqh,jdbcType=VARCHAR},
+      R_XZDXZ = #{xzdxz,jdbcType=VARCHAR},
+      R_QTZJ1_M = #{qtzj1m,jdbcType=VARCHAR},
+      R_QTZJ1_H = #{qtzj1h,jdbcType=VARCHAR},
+      R_QTZJ2_M = #{qtzj2m,jdbcType=VARCHAR},
+      R_QTZJ2_H = #{qtzj2h,jdbcType=VARCHAR},
+      R_SF = #{sf,jdbcType=VARCHAR},
+      R_SG = #{sg,jdbcType=DECIMAL},
+      R_LX = #{lx,jdbcType=VARCHAR},
+      R_TX = #{tx,jdbcType=VARCHAR},
+      R_KY = #{ky,jdbcType=CHAR},
+      R_TBBJ1_BW = #{qtzj1bw,jdbcType=VARCHAR},
+      R_TBBJ1_FW = #{tbbj1fw,jdbcType=VARCHAR},
+      R_TBBJ1_SL = #{tbbj1sl,jdbcType=VARCHAR},
+      R_TBBJ1_BJ = #{tbbj1bj,jdbcType=VARCHAR},
+      R_TBBJ2_BW = #{tbbj2bw,jdbcType=VARCHAR},
+      R_TBBJ2_FW = #{tbbj2fw,jdbcType=VARCHAR},
+      R_TBBJ2_SL = #{tbbj2sl,jdbcType=VARCHAR},
+      R_TBBJ2_BJ = #{tbbj2bj,jdbcType=VARCHAR},
+      R_TBBJ3_BW = #{tbbj3bw,jdbcType=VARCHAR},
+      R_TBBJ3_FW = #{tbbj3fw,jdbcType=VARCHAR},
+      R_TBBJ3_SL = #{tbbj3sl,jdbcType=VARCHAR},
+      R_TBBJ3_BJ = #{tbbj3bj,jdbcType=VARCHAR},
+      R_TSTZ1 = #{tstz1,jdbcType=VARCHAR},
+      R_TSTZ2 = #{tstz2,jdbcType=VARCHAR},
+      R_TSTZ3 = #{tstz3,jdbcType=VARCHAR},
+      R_AJBH = #{ajbh,jdbcType=VARCHAR},
+      R_AJLB = #{ajlb,jdbcType=VARCHAR},
+      R_SH = #{sh,jdbcType=VARCHAR},
+      R_ZTLX = #{ztlx,jdbcType=VARCHAR},
+      R_JYAQ = #{jyaq,jdbcType=VARCHAR},
+      R_TPRQ = #{tprq,jdbcType=VARCHAR},
+      R_TPFX = #{tpfx,jdbcType=VARCHAR},
+      R_FLSD = #{flsd,jdbcType=VARCHAR},
+      R_DBJB = #{dbjb,jdbcType=VARCHAR},
+      R_TJLJB = #{tjljb,jdbcType=VARCHAR},
+      R_JJ = #{jj,jdbcType=VARCHAR},
+      R_TJRQ = #{tjrq,jdbcType=VARCHAR},
+      R_TJDWQH = #{tjdwqh,jdbcType=VARCHAR},
+      R_TJND = #{tjnd,jdbcType=DECIMAL},
+      R_TJSXH = #{tjsxh,jdbcType=VARCHAR},
+      R_TJJB = #{tjjb,jdbcType=VARCHAR},
+      R_LADWQH = #{ladwqh,jdbcType=VARCHAR},
+      R_LADWXC = #{ladwxc,jdbcType=VARCHAR},
+      R_ZBR = #{zbr,jdbcType=VARCHAR},
+      R_LXFS = #{lxfs,jdbcType=VARCHAR},
+      R_DJRQ = #{djrq,jdbcType=VARCHAR},
+      R_DJR = #{djr,jdbcType=VARCHAR}
+
+    where R_RYBH = #{rybh,jdbcType=VARCHAR}
+  </update>
+
+  <select id="listShowEnteringBdzt" resultMap="BaseResultMap" parameterType="com.qbwl.bkglpt02.entity.BDZTRY">
+    select
+      <include refid="Base_Column_List"/>
+    from T_BD_ZTRY
+    <where>
+      <if test="xm != null and xm != ''">
+        "R_XM" LIKE  CONCAT(#{xm},'%')
+      </if>
+      <if test="sfzh != null and sfzh != ''">
+        OR  R_SFZH = #{sfzh}
+      </if>
+    </where>
+  </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qbwl.bkglpt02.dao.WarningMapper" >
+  <resultMap id="BaseResultMap" type="com.qbwl.bkglpt02.entity.Warning" >
+    <constructor >
+      <idArg column="WARNID" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="WARNTYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WARNNAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WARNSEX" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="WARNCERTCODE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="REMARK" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WARNSTATUS" jdbcType="DECIMAL" javaType="java.lang.Short" />
+      <arg column="WARNCONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WARNDATE" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="WARNPROCUSER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WARNPROCRESULT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="WARNPROCDATE" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="WARNSOURCEDICT" jdbcType="DECIMAL" javaType="java.lang.Integer" />
+      <arg column="WARNSOURCEID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TASKID" jdbcType="DECIMAL" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    WARNID, WARNTYPE, WARNNAME, WARNSEX, WARNCERTCODE, REMARK, WARNSTATUS, WARNCONTENT,
+    WARNDATE, WARNPROCUSER, WARNPROCRESULT, WARNPROCDATE, WARNSOURCEDICT, WARNSOURCEID, 
+    TASKID
+  </sql>
+
+  <select id="getByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from WARNING
+    where WARNID = #{warnid,jdbcType=DECIMAL}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from WARNING
+    where WARNID = #{warnid,jdbcType=DECIMAL}
+  </delete>
+
+  <insert id="insert" parameterType="com.qbwl.bkglpt02.entity.Warning" >
+    insert into WARNING (WARNID, WARNTYPE, WARNNAME, 
+      WARNSEX, WARNCERTCODE, REMARK, 
+      WARNSTATUS, WARNCONTENT, WARNDATE, 
+      WARNPROCUSER, WARNPROCRESULT, WARNPROCDATE, 
+      WARNSOURCEDICT, WARNSOURCEID, TASKID
+      )
+    values (#{warnid,jdbcType=DECIMAL}, #{warntype,jdbcType=VARCHAR}, #{warnname,jdbcType=VARCHAR}, 
+      #{warnsex,jdbcType=DECIMAL}, #{warncertcode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{warnstatus,jdbcType=DECIMAL}, #{warncontent,jdbcType=VARCHAR}, #{warndate,jdbcType=DECIMAL}, 
+      #{warnprocuser,jdbcType=VARCHAR}, #{warnprocresult,jdbcType=VARCHAR}, #{warnprocdate,jdbcType=DECIMAL}, 
+      #{warnsourcedict,jdbcType=DECIMAL}, #{warnsourceid,jdbcType=VARCHAR}, #{taskid,jdbcType=DECIMAL}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.qbwl.bkglpt02.entity.Warning" >
+    insert into WARNING
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="warnid != null" >
+        WARNID,
+      </if>
+      <if test="warntype != null" >
+        WARNTYPE,
+      </if>
+      <if test="warnname != null" >
+        WARNNAME,
+      </if>
+      <if test="warnsex != null" >
+        WARNSEX,
+      </if>
+      <if test="warncertcode != null" >
+        WARNCERTCODE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="warnstatus != null" >
+        WARNSTATUS,
+      </if>
+      <if test="warncontent != null" >
+        WARNCONTENT,
+      </if>
+      <if test="warndate != null" >
+        WARNDATE,
+      </if>
+      <if test="warnprocuser != null" >
+        WARNPROCUSER,
+      </if>
+      <if test="warnprocresult != null" >
+        WARNPROCRESULT,
+      </if>
+      <if test="warnprocdate != null" >
+        WARNPROCDATE,
+      </if>
+      <if test="warnsourcedict != null" >
+        WARNSOURCEDICT,
+      </if>
+      <if test="warnsourceid != null" >
+        WARNSOURCEID,
+      </if>
+      <if test="taskid != null" >
+        TASKID,
+      </if>
+    </trim>
+
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="warnid != null" >
+        #{warnid,jdbcType=DECIMAL},
+      </if>
+      <if test="warntype != null" >
+        #{warntype,jdbcType=VARCHAR},
+      </if>
+      <if test="warnname != null" >
+        #{warnname,jdbcType=VARCHAR},
+      </if>
+      <if test="warnsex != null" >
+        #{warnsex,jdbcType=DECIMAL},
+      </if>
+      <if test="warncertcode != null" >
+        #{warncertcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="warnstatus != null" >
+        #{warnstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="warncontent != null" >
+        #{warncontent,jdbcType=VARCHAR},
+      </if>
+      <if test="warndate != null" >
+        #{warndate,jdbcType=DECIMAL},
+      </if>
+      <if test="warnprocuser != null" >
+        #{warnprocuser,jdbcType=VARCHAR},
+      </if>
+      <if test="warnprocresult != null" >
+        #{warnprocresult,jdbcType=VARCHAR},
+      </if>
+      <if test="warnprocdate != null" >
+        #{warnprocdate,jdbcType=DECIMAL},
+      </if>
+      <if test="warnsourcedict != null" >
+        #{warnsourcedict,jdbcType=DECIMAL},
+      </if>
+      <if test="warnsourceid != null" >
+        #{warnsourceid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskid != null" >
+        #{taskid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.qbwl.bkglpt02.entity.Warning" >
+    update WARNING
+    <set >
+      <if test="warntype != null" >
+        WARNTYPE = #{warntype,jdbcType=VARCHAR},
+      </if>
+      <if test="warnname != null" >
+        WARNNAME = #{warnname,jdbcType=VARCHAR},
+      </if>
+      <if test="warnsex != null" >
+        WARNSEX = #{warnsex,jdbcType=DECIMAL},
+      </if>
+      <if test="warncertcode != null" >
+        WARNCERTCODE = #{warncertcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="warnstatus != null" >
+        WARNSTATUS = #{warnstatus,jdbcType=DECIMAL},
+      </if>
+      <if test="warncontent != null" >
+        WARNCONTENT = #{warncontent,jdbcType=VARCHAR},
+      </if>
+      <if test="warndate != null" >
+        WARNDATE = #{warndate,jdbcType=DECIMAL},
+      </if>
+      <if test="warnprocuser != null" >
+        WARNPROCUSER = #{warnprocuser,jdbcType=VARCHAR},
+      </if>
+      <if test="warnprocresult != null" >
+        WARNPROCRESULT = #{warnprocresult,jdbcType=VARCHAR},
+      </if>
+      <if test="warnprocdate != null" >
+        WARNPROCDATE = #{warnprocdate,jdbcType=DECIMAL},
+      </if>
+      <if test="warnsourcedict != null" >
+        WARNSOURCEDICT = #{warnsourcedict,jdbcType=DECIMAL},
+      </if>
+      <if test="warnsourceid != null" >
+        WARNSOURCEID = #{warnsourceid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskid != null" >
+        TASKID = #{taskid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where WARNID = #{warnid,jdbcType=DECIMAL}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.qbwl.bkglpt02.entity.Warning" >
+    update WARNING
+    set WARNTYPE = #{warntype,jdbcType=VARCHAR},
+      WARNNAME = #{warnname,jdbcType=VARCHAR},
+      WARNSEX = #{warnsex,jdbcType=DECIMAL},
+      WARNCERTCODE = #{warncertcode,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      WARNSTATUS = #{warnstatus,jdbcType=DECIMAL},
+      WARNCONTENT = #{warncontent,jdbcType=VARCHAR},
+      WARNDATE = #{warndate,jdbcType=DECIMAL},
+      WARNPROCUSER = #{warnprocuser,jdbcType=VARCHAR},
+      WARNPROCRESULT = #{warnprocresult,jdbcType=VARCHAR},
+      WARNPROCDATE = #{warnprocdate,jdbcType=DECIMAL},
+      WARNSOURCEDICT = #{warnsourcedict,jdbcType=DECIMAL},
+      WARNSOURCEID = #{warnsourceid,jdbcType=VARCHAR},
+      TASKID = #{taskid,jdbcType=DECIMAL}
+    where WARNID = #{warnid,jdbcType=DECIMAL}
+  </update>
+</mapper>
